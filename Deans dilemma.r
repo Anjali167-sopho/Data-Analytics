@@ -60,4 +60,11 @@ View(placedEt.df)
 # 3 variables -- {Salary, Percent_MBA, Percentile_ET} using the dataframe placedET.#
 library(car)
 scatterplotMatrix(formula=~Salary+Percent_MBA+Percentile_ET,data=placedEt.df,
-                  main="Scatter Plot Matrix",diagonal="histogram")
+                  main="Scatter Plot Matrix")
+#Use R to create a table showing the average salary of males and females,# 
+#who were placed. Review whether there is a gender gap in the data.# 
+# In other words, observe whether the average salaries of males is higher# 
+#than the average salaries of females in this dataset.#
+mytable<-aggregate(placed.df$Salary,by=list(Gender=placed.df$Gender),mean)
+mytable
+t.test(Salary~Gender,data = placed.df,alternative="less")
